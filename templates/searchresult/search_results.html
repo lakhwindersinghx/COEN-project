@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+    <h1>Search Results</h1>
+    <p>Showing results for: "{{ query }}"</p>
+    <ul>
+        {% if results %}
+            {% for package in results %}
+                <li><a href="/package/{{ package.id }}">Montreal to {{ package.destination }}</a></li>
+            {% endfor %}
+        {% else %}
+            <li>No results found.</li>
+        {% endif %}
+    </ul>
+{% endblock %}

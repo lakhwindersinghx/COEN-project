@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<style>
+.heading {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 450;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+.heading:after, .heading:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #c50000;
+    border-top: 1px solid #c50000;
+    height: 5px;
+    background-color: #f8f8f8;
+}
+
+.activity-item {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap as needed */
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Adds subtle shadow for depth */
+}
+
+.activity-details {
+    display: flex;
+    align-items: flex-start;
+}
+
+.activity-image-container {
+    flex: 1; /* Takes up 1 part of the flex container */
+    max-width: 500px;
+    padding-right: 20px; /* Adds space between the image and the text */
+}
+
+.activity-info {
+    flex: 2; /* Takes up 2 parts of the flex container, more space for text */
+    padding: 10px;
+}
+
+.activity-image {
+    max-width: 100%; /* Makes image responsive */
+    height: auto;
+    border-radius: 10px; /* Optional: adds rounded corners to images */
+}
+
+.activity_name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.activity_description {
+    font-size: 18px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.activity_price {
+    font-size: 20px;
+    color: #c00;
+    margin-top: 10px;
+}
+
+.booking-button {
+    margin-top: 20px;
+    width: 150px;
+    margin-left: 15px;
+}
+
+.button {
+    width:150px;
+    padding: 10px 20px;
+     margin-left: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background: linear-gradient(to right, #2e6c15, #4ba228, #0e8545);
+    color: #fff;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background: linear-gradient(to right, #cc0033, #ff3300);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="activities-list">
+    <div class="container" style="width: 80%; margin: auto; padding-top: 20px;">
+        <h1 class="heading">Activities</h1>
+        <div class="navigation">
+            <div class="activities-list">
+                {% for activity in activities %}
+                <div class="activity-item">
+                    <div class="activity-image-container">
+                        {% for image_url in activity.image_urls %}
+                            <img src="{% static image_url %}" alt="{{ activity.name }}" class="activity-image">
+                        {% endfor %}
+                    </div>
+                    <div class="activity-info">
+                        <p class="activity_name">{{ activity.name }}</p>
+                        <p class="activity_description">{{ activity.description }}</p>
+                        <p class="activity_price">Price: ${{ activity.price }}</p>
+                        <div class="booking-button">
+                            <button class="button" onclick="location.href='{% url 'add_activity' %}'">Add Activity</button>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No Activities available.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

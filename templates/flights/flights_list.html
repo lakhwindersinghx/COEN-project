@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        .heading {
+            text-align: center;
+            font-size: 50px;
+            font-weight: 450;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: grid;
+            grid-template-columns: 1fr max-content 1fr;
+            grid-template-rows: 27px 0;
+            grid-gap: 20px;
+            align-items: center;
+        }
+
+        .heading:after, .heading:before {
+            content: " ";
+            display: block;
+            border-bottom: 1px solid #c50000;
+            border-top: 1px solid #c50000;
+            height: 5px;
+            background-color: #f8f8f8;
+        }
+
+        .flight_name, .hotel_city, .hotel_price {
+            margin: 0; /* Removes default margins */
+            padding: 5px 0; /* Adds some padding at the top and bottom */
+            color: #940b64;
+            border: none;
+            font-family: Arial, sans-serif;
+            font-size: 25px;
+            margin-left: -20px;
+
+        }
+
+        .hotel_city {
+            border: none;
+            color: #666;
+            font-size: 20px;
+            color: #5858c4;
+            font-family: Arial, sans-serif;
+            border-bottom: none; /* Removes the border if any */
+        }
+
+        .booking-button {
+            display: block;
+            width: 70px;
+            margin: 10px auto;
+            padding: 2px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 2px;
+            font-size: 18px;
+        }
+
+        .booking-button:hover {
+            background-color: #0056b3;
+        }
+
+        .hotel_price_per_night {
+            color: red;
+            font-size: 23px;
+            margin-left: -20px;
+            font-size: 20px;
+            border: none;
+            text-align: left;
+            position: absolute;
+        {#background-color: rgba(219, 252, 246, 0.8);#} padding: 5px;
+            border-bottom-left-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+{% endblock %}
+
+
+
+{% block content %}
+    <h1 class="heading" style="padding-left: 0px">Flights</h1>
+    <div class="flights-list">
+    <div class="container" style="width: 80%; margin: auto; padding-top: 50px;">
+    <div class="navigation" style="margin-bottom: 30px; text-align: center;">
+        <div class="flights-list" style="display: flex; flex-direction: column; align-items: center;">
+            {% for flight in flights %}
+                <div class="flight-item"
+                     style="border: 1px solid #000; margin-bottom: 20px; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px;">
+                    <div class="flight-image" style="flex: 1;">
+                        <!-- Assuming 'hotel.image' is the path to your image -->
+                        {% for image_url in flight.image_urls %}
+                            <img src="{% static image_url %}" alt="{{ flight.name }}" class="flight-image">
+                        {% endfor %}
+                    </div>
+                    <div class="flight-details" style="flex: 1; text-align: left; padding-left: 20px;">
+                        <p class="flight_name">{{ flight.name }}</p>
+                        <p>From: {{ flight.departure_city }}</p>
+                        <p>To: {{ flight.arrival_city }}</p>
+                        <p>Price: ${{ flight.price }}</p>
+                    </div>
+                    <div class="booking-button">
+                        <button onclick="location.href='{% url 'book_flight' %}'">Book Flight</button>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No flights available.</p>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

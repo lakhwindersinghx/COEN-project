@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="booking-success">
+        <h2>Booking Successful</h2>
+        <p>Your flight has been successfully booked.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        margin-top: 200px;
+    }
+
+    .booking-success {
+        background-color: #dff0d8;
+        border: 1px solid #d6e9c6;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+        font-size: 18px;
+        color: #3c763d;
+    }
+</style>
+{% endblock %}

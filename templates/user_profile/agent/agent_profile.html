@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet"  href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="account-page">
+        <h1>Your Account</h1>
+        <div class=" container_profile">
+            <a href="{% url 'all_users' %}" class="account-section" id="as1">
+                <h2 style="border: none">Manage Users</h2>
+                <p>View or manage registered users</p>
+            </a>
+            <a href="{% url 'my_profile' %}" class="account-section" id="as2">
+                <h2 style="border: none">My Profile</h2>
+                <p>Edit your account information</p>
+            </a>
+            <a href="{% url 'book_package' %}" class="account-section" id="as3">
+                <h2 style="border: none">Create Booking</h2>
+                <p>Want to create new booking?</p>
+            </a>
+            <a href="{% url 'all_bookings' %}" class="account-section" id="as4">
+                <h2 style="border: none">All Bookings</h2>
+                <p>Edit or see all bookings</p>
+            </a>
+            <a href="{% url 'package_create' %}" class="account-section" id="as5">
+                <h2 style="border: none">Create Package</h2>
+                <p>Want to create new package?</p>
+            </a>
+            <a href="{% url 'all_packages' %}" class="account-section" id="as6">
+                <h2 style="border: none">All Packages</h2>
+                <p>Edit or see all packages</p>
+            </a>
+        </div>
+    </div>
+    <br><br><br><br>
+{% endblock %}

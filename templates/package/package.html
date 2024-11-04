@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title%}
+    package
+{% endblock title %}
+{% block body %}
+   
+<div class="container my-3 px-4 ">
+<form method="post" action="/packages">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="source" class="form-label">Source</label>
+    <input type="text" class="form-control" id="source" name="source" >
+  </div>
+    <div class="mb-3">
+    <label for="destination" class="form-label">Destination</label>
+    <input type="text" class="form-control" id="destination" name="destination">
+
+  </div>
+{#    <div class="mb-3">#}
+{#    <label for="hotels" class="form-label">Hotel Name</label>#}
+{#    <input type="text" class="form-control" id="hotels" name="hotels">#}
+{##}
+{#  </div>#}
+  <div class="mb-3">
+    <label for="seats" class="form-label">Seats</label>
+    <input type="number" class="form-control" id="seats" min="1" max="9" name="seats">
+  </div>
+    <div class="mb-3">
+    <label for="room" class="form-label">Room</label>
+    <input type="number" class="form-control" id="room" min="1" max="9" name="room">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+{% endblock body %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="account-page">
+        <h1>My Orders</h1>
+        <div class="filters" style="font-size: 18px; display: flex ; justify-content: space-around;text-decoration: none; margin-left: 35px;margin-top: 20px">
+            <span class="filters_n" style="color: #0d6efd"> Filters : </span>
+            <a href="{% url 'my-orders-filter' 'a_to_z' %}" style="text-decoration: none; ">Sort A to Z</a> |
+            <a href="{% url 'my-orders-filter' 'z_to_a' %}" style="text-decoration: none; ">Sort Z to A</a> |
+            <a href="{% url 'my-orders-filter' 'date_acc' %}" style="text-decoration: none; ">Sort by Date Ascending</a> |
+            <a href="{% url 'my-orders-filter' 'date_desc' %}" style="text-decoration: none; ">Sort by Date Descending</a>
+        </div>
+        <br>
+        {% if orders %}
+            <ul>
+                {% for order in orders %}
+                    <li>
+                        Package: Montreal to {{order.Package.destination }}
+                        <br>Date: {{ order.start_Date }} - {{ order.end_Date }}
+                        <br>Booked on: {{ order.created_at }}
+                    </li>
+                    <hr>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You are yet to book package with us!</p>
+        {% endif %}
+    </div>
+    <br><br><br><br>
+{% endblock %}

@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+
+    Travel Diary
+
+{% endblock title %}
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Custom CSS for equal height and spacing of cards */
+        .p-index container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around; /* Ensure even spacing on all sides */
+            align-items: stretch; /* Stretch cards to fill the container height */
+            gap: 50px;
+        }
+
+        .p-index .card {
+            flex: 1 0 calc(33.333% - 50px); /* Subtract gap from the width */
+            display: flex;
+            flex-direction: column; /* Full width within the column */
+            /* Set a fixed height or use 'h-100' class for equal heights based on content */
+        }
+
+        .p-index .card-img-top {
+            width: 100%; /* Image takes full width of the card */
+            height: 310px; /* Keep the aspect ratio of the image */
+            object-fit: cover; /* Cover the card's dimension */
+        }
+
+        .p-index .card-body {
+            flex-grow: 1; /* Allow card body to fill the available space */
+            display: flex;
+            flex-direction: column; /* Stack body content vertically */
+            justify-content: space-between; /* Space between content and button */
+            {#margin-left: 0px;#}
+        }
+
+        .p-index .card-body .card-text{
+            margin-left: 0px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        .p-index .btn-primary {
+            align-self: center; /* Center the button horizontally */
+            margin-top: 10px; /* Spacing above the button */
+        }
+
+        /* Responsive column settings */
+        @media (min-width: 768px) {
+            .card-col {
+                flex: 0 0 auto;
+                width: 32%; /* 3 columns with spacing */
+            }
+        }
+        .mb-4{
+            text-align: justify;
+            margin-left: 0px;
+            margin-bottom: 2.5rem!important;
+        }
+
+        .see-all-packages-btn-container {
+            display: flex;
+            justify-content: flex-end; /* Aligns the button to the right */
+            margin-top: 20px; /* Adds some space above the button */
+        }
+
+        .see-all-packages-btn {
+            padding: 10px 20px; /* Adds padding inside the button */
+            font-size: 16px; /* Adjust font size as necessary */
+            /* Additional styling to match your design, e.g., colors, border, etc. */
+        }
+
+    </style>
+{% endblock %}
+{% block body %}
+
+    <div class="container my-4 px-3">
+        <h4 align="center">FLIGHTS</h4>
+        <div id="carouselExampleDark" class="carousel carousel-dark slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="static/img/flight1.png" class="d-block w-100" height="400px" width="450px" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>AIR CANADA</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="static/img/flight2.png" class="d-block w-100" height="400px" width="450px" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>QATAR AIRWAYS</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="static/img/flight3.png" class="d-block w-100" height="400px" width="450px" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>SWISS AIRLINES</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="static/img/flight4.png" class="d-block w-100" height="400px" width="450px" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>AMERICAN AIRLINES</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <h4 align="center">HOTELS</h4>
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="static/img/hotel2.png" height="400px" width="450px" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="static/img/hotel3.png" height="400px" width="450px" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="static/img/hotel1.png" height="400px" width="450px" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="static/img/hotel4.png" height="400px" width="450px" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="text-center my-5">
+            <h2 style="border: none; color: #0056b3; text-align: start; margin-left: 0px; margin-bottom: 20px">Popular Packages</h2>
+            <p class="mb-4">Thinking of traveling somewhere soon? Here are some options to help you get started.</p>
+            <div class="p-index container" style="display: flex; flex-direction: row; justify-content: space-around; align-items: stretch; column-gap: 50px">
+                <div class="card mb-3">
+                    {% if package_alberta %}
+                    <div class="card h-100">
+                        <img src="{% static 'img/alberta.jpg' %}" class="card-img-top" alt="Alberta, Canada">
+                        <div class="card-body">
+                            <h5 class="card-title">Alberta, Canada</h5>
+{#                            <p class="card-text">7 Days Trip</p>#}
+                            <p class="card-text">CAD$ {{ package_alberta.price }}</p>
+                            <a href="{% url 'package_detail' 1 %}" class="btn btn-primary">View Package</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <!-- Second card for Toronto -->
+                <div class="card mb-3">
+                    {% if package_newyork %}
+                    <div class="card h-100">
+                        <img src="{% static 'img/newyork.jpg' %}" class="card-img-top" alt="Newyork, USA">
+                        <div class="card-body">
+                            <h5 class="card-title">Newyork, USA</h5>
+{#                            <p class="card-text">7 Days Trip</p>#}
+                            <p class="card-text">CAD$ {{ package_newyork.price }}</p>
+                            <a href="{% url 'package_detail' 3 %}" class="btn btn-primary">View Package</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <!-- Third card for Mumbai -->
+                <div class="card mb-3">
+                    {% if package_mumbai %}
+                    <div class="card h-100">
+                        <img src="{% static 'img/mumbai/mumbai2.jpg' %}" class="card-img-top" alt="Mumbai, India">
+                        <div class="card-body">
+                            <h5 class="card-title">Mumbai, India</h5>
+                            <p class="card-text">CAD$ {{ package_mumbai.price }}</p>
+                            <a href="{% url 'package_detail' 2 %}" class="btn btn-primary">View Package</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="see-all-packages-btn-container">
+                <a href="{% url 'package_list' %}" class="btn btn-primary see-all-packages-btn">See All Packages</a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+{% endblock body %}

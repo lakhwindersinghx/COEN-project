@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        .edit_container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        form p {
+            margin-bottom: 0.5em;
+        }
+
+        .save-btn {
+            padding: 0.5em 1em;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 30px;
+            margin-left: 30px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            width: 91%;
+        }
+
+        .save-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .discard-btn {
+            color: #333;
+            width: 91%;
+            margin-left: 29px;
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+        }
+
+        .discard-btn:hover {
+            background-color: #e2e6ea;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="edit_container">
+        <h2 style="border: none; text-align: justify">Edit User Profile</h2>
+        <form method="post" style="margin-right: 25px">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save-btn">Save Changes</button>
+            <a href="{% url 'all_users' %}" class="btn discard-btn">Discard Changes</a>
+        </form>
+    </div>
+{% endblock %}

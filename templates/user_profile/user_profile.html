@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet"  href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="account-page">
+        <h1>Your Account</h1>
+        <div class=" container_profile">
+            <a href="{% url 'my_orders' %}" class="account-section" id="as1">
+                <h2 style="border: none">Your Orders</h2>
+                <p>Track, view, or manage your orders</p>
+            </a>
+            <a href="{% url 'my_profile' %}" class="account-section" id="as2">
+                <h2 style="border: none">My Profile</h2>
+                <p>Edit your account information</p>
+            </a>
+            <a href="{% url 'package_list' %}" class="account-section" id="as3">
+                <h2 style="border: none">Login & Security</h2>
+                <p>Change your password or secure your account</p>
+            </a>
+            <a href="{% url 'package_list' %}" class="account-section" id="as4">
+                <h2 style="border: none">My Addresses</h2>
+                <p>Edit or add new addresses</p>
+            </a>
+        </div>
+    </div>
+    <br><br><br><br>
+{% endblock %}

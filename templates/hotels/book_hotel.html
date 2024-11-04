@@ -1,0 +1,70 @@
+<!-- book_hotel.html -->
+{% block content %}
+<div class="booking-box">
+    <h2 class="text-center mb-5">Book a Room</h2>
+    <form action="{% url 'confirm_booking' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group mb-3">
+            <label for="check_in" class="font-weight-bold">Check-in Date:</label>
+            <input type="date" id="check_in" name="check_in" class="form-control" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="check_out" class="font-weight-bold">Check-out Date:</label>
+            <input type="date" id="check_out" name="check_out" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+</div>
+{% endblock %}
+
+<style>
+.booking-box {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+    margin-top: 100px;
+}
+
+.booking-box h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+form {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0062cc;
+}
+</style>

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+
+{% block title %}
+    Package Detail
+{% endblock %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+    <h1 >Montreal To {{ package.destination }}</h1>
+
+    <br>
+    <div class="image-container">
+        {% if package.destination == 'Mumbai' %}
+            <!-- Display images for Mumbai -->
+            {% for image in mumbai_images %}
+                <img src="{% static 'img/mumbai/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+        {% if package.destination == 'Vancouver' %}
+            <!-- Display images for VANCOUVER -->
+            {% for image in vancouver_images %}
+                <img src="{% static 'img/vancouver/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Newyork' %}
+            <!-- Display images for NEW-YORK -->
+            {% for image in newyork_images %}
+                <img src="{% static 'img/newyork/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Paris' %}
+            <!-- Display images for PARIS -->
+            {% for image in paris_images %}
+                <img src="{% static 'img/paris/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Alberta' %}
+            <!-- Display images for ALBERTA -->
+            {% for image in alberta_images %}
+                <img src="{% static 'img/alberta/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+    </div>
+    <br>
+    <p>Description: </p>
+    <ul>
+        {% for description in package.description|split:"," %}
+            <li style="margin-left: 30px;margin-top: 2px">{{ description }}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <p>Activities:</p>
+    <ul>
+        {% for activity in package.activities|split:"," %}
+            <li style="margin-left: 30px;margin-top: 2px">{{ activity }}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <p>Price: {{ package.price }} CAD</p>
+    <br>
+    <a href="{% url 'book_package'%}" class="btn btn-primary">Book This Package</a>
+  <!-- Somewhere in your package display templates -->
+    <a href="{% url 'add_to_cart' package.id %}">Add to Cart</a>
+
+    <a href="{% url 'package_list' %}" class="back-link">Back to Package List</a>
+    <style>
+
+           /* CSS styles for images and
+``` other elements */
+    .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .image-container img {
+        width: 350px;
+        height: auto;
+        margin: 1px;
+        {#transition: transform 0.3s ease;#}
+    }
+
+    .image-container img:hover {
+        transform: scale(1.1);
+    }
+
+
+    </style>
+<br><br><br><br>
+{% endblock %}

@@ -1,0 +1,401 @@
+/*Form css*/
+.form-control {
+    display: flex;
+    flex-direction: column; /* Aligns form elements vertically */
+    align-items: center; /* Centers form elements horizontally */
+    justify-content: center;
+    width: 90%; /* Set desired width */
+    max-width: 500px; /* Maximum width */
+    margin: auto; /* Center the form in the page */
+    padding: 20px;
+}
+
+.form-container {
+    margin-bottom: 15px; /* Space between form groups */
+    width: 100%; /* Full width of the container */
+}
+
+label, input {
+    width: 100%; /* Full width of their container */
+
+}
+
+button:hover { /*.signin-form button:hover {*/
+    background-color: #0056b3;
+
+}
+
+/* signin page css */
+
+.signin-form {
+    /* Styles for the form */
+
+    margin: auto;
+    width: 25%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.signin-form input {
+    /* Styles for input fields */
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.signin-form button {
+    /* Styles for the submit button */
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.signin-form button:hover {
+    background-color: #0056b3;
+}
+
+
+/* forgot PW page css */
+
+.forgot-password-form {
+    /* Styles for the form */
+
+    margin: auto;
+    width: 25%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.forgot-password-form input {
+    /* Styles for input fields */
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.forgot-password-form button {
+    /* Styles for the submit button */
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.forgot-password-form button:hover {
+    background-color: #0056b3;
+}
+
+
+/* signup page css */
+
+.signup-form {
+    /* Styles for the form */
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    margin: auto;
+    width: 34%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.signup-form h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    /*justify-content: center;*/
+    /*margin-top: 0; !* Remove any default margin *!*/
+}
+
+.signup-form input {
+    /* Styles for input fields */
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.signup-form button {
+    /* Styles for the submit button */
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.signup-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the current page link */
+nav ul li a.current {
+    color: #bab0b0; /* Change color as needed */
+    font-weight: bold; /* Add other styles as needed */
+}
+
+/*!*package details page css*!*/
+h1 {
+    color: #5858c4;
+    padding-left: 30px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+h2 {
+    margin: 50px;
+    border: solid;
+    border-color: #0056b3;
+}
+
+.description,
+p {
+    margin-left: 30px;
+    color: #666;
+}
+
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+}
+
+ol, ul {
+    padding-left: 3rem;
+}
+
+a.back-link:hover {
+    margin-left: 30px;
+}
+
+a.back-link {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 30px;
+}
+
+a {
+    /*margin-left: 20px;*/
+    text-decoration: none;
+    font-size: larger;
+    /*text-align: center;*/
+}
+
+.account-page {
+    /*max-width: 960px;*/
+    /*margin: 20px auto;*/
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.account-page h1 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.container_profile {
+    display: grid;
+    /*width: 90%;*/
+    grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+    grid-template-rows: auto auto;
+    grid-column-gap: 20px;
+    gap: 20px;
+    justify-content: left;
+    margin-top: 70px;
+}
+
+@media (min-width: 1400px)
+
+.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 95%;
+}
+
+.account-section {
+    width: 90%;
+    height: 140px;
+    font-size: 5em;
+    text-align: left;
+    border-radius: 15px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    padding: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: space-around;
+}
+
+#as1 {
+    background-color: rgba(0, 0, 255, 0.34);
+}
+
+#as2 {
+    background-color: rgba(227, 175, 175, 0.34);
+}
+
+#as3 {
+    background-color: rgba(255, 255, 0, 0.34);
+}
+
+#as4 {
+    background-color: rgba(0, 128, 0, 0.34);
+}
+
+#as5 {
+    background-color: rgba(0, 255, 51, 0.34);
+}
+
+#as6 {
+    background-color: rgba(0, 98, 128, 0.34);
+}
+
+.account-section h2 {
+    margin: 0;
+    font-size: 40px;
+    color: #007185;
+    /*margin-bottom: 5px;*/
+}
+
+.account-section p {
+    font-size: 15px;
+    color: #767676;
+}
+
+.profile-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.profile-table th,
+.profile-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.profile-table th {
+    background-color: #f4f4f4;
+}
+
+/* Additional styling */
+.account-page {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+footer {
+    margin-top: auto;
+}
+
+footer h2 {
+    /*color: #333; !* Dark text color *!*/
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #ffd966; /* Yellow bottom border */
+    /*display: inline-block;*/
+}
+
+footer p {
+    color: #dad9d9; /* Dark text color */
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Ensure the text in the contact details is aligned to the right */
+footer .col-lg-4:last-child {
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    /* For smaller screens, make sure the text is centered */
+    footer .col-md-6, footer .col-md-12 {
+        text-align: center;
+    }
+
+    /* Stack the columns vertically on smaller screens */
+    footer .col-lg-4 {
+        margin-bottom: 30px;
+    }
+}
+
+html, body {
+    height: 100%; /* Set the body to 100% of the viewport height */
+}
+
+body {
+    display: flex; /* Enable flex on the body */
+    flex-direction: column; /* Stack flex children vertically */
+}
+
+main {
+    flex: 1; /* Allow main to expand and fill available space */
+}
+
+/* You can add more CSS styles here to match the look and feel of your site */
+
+.table-container {
+    width: 65%;
+    margin: auto;
+    text-align: justify;
+}
+
+.all_booking_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.all_package_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td {
+    text-align: justify;
+}
+.form-row {
+    display: flex; /* This will make your form elements align in a row */
+    /*justify-content: center; !* This centers the form in the middle of the page *!*/
+    margin-bottom: 20px; /* Adds some space below the form */
+}
+.input-field, .submit-btn {
+    margin: 0 10px; /* Adds some space between the input field and the button */
+}
+.form-container {
+    padding-right: 7%; /* Represents the empty space */
+}

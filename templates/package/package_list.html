@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<h1> Package List</h1>
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        .card {
+
+            width: 275px;
+            height: 270px;
+            border: 1px solid rgba(212, 243, 238, 0.8);
+            border-radius: 5px;
+            margin: 15px;
+            display: inline-block;
+            position: relative;
+            transition: transform 0.3s;
+            overflow: hidden;
+            box-shadow: 0 45px 65px rgba(0, 0, 0, 0.20), 0 35px 22px rgba(155, 152, 152, 0.16);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background-image: linear-gradient(#ffffff, #f8f8de, #f1d3da);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 50px;
+            font-weight: 450;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: grid;
+            grid-template-columns: 1fr max-content 1fr;
+            grid-template-rows: 27px 0;
+            grid-gap: 20px;
+            align-items: center;
+        }
+
+        .heading:after, .heading:before {
+            content: " ";
+            display: block;
+            border-bottom: 1px solid #c50000;
+            border-top: 1px solid #c50000;
+            height: 5px;
+            background-color: #f8f8f8;
+        }
+
+        .price {
+            font-size: 20px;
+            text-align: right;
+            position: absolute;
+            top: 210px;
+            right: 5px;
+            color: #9f9d9d;
+        {#background-color: rgba(219, 252, 246, 0.8);#} padding: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .destination_name {
+            font-size: 22px;
+            color: #940b64;
+            font-family: franklin;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1 class="heading" style="padding-left: 0px">Pre-Made Packages</h1>
+    <div class="card-container"
+         style="display: flex;flex-direction: row; flex-wrap: wrap; align-content: space-around; justify-content: space-evenly;">
+
+        {% for package in packages %}
+            <div class="card">
+                <a href="{% url 'package_detail' package.pk %}" class="destination_name">
+                    <img src="{% static 'img/' %}{{ package.destination|lower }}.jpg" alt="{{ package.destination }}">
+                </a>
+                <p class="price">${{ package.price }}</p>
+                <div class="card-body">
+                    <a href="{% url 'package_detail' package.pk %}"
+                       class="destination_name">{{ package.destination }}</a>
+                </div>
+            </div>
+        {% endfor %}
+
+        </ul>
+
+    </div>
+    </div>
+    <br><br><br><br>
+{% endblock %}

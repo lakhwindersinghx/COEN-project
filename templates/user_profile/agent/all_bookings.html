@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet"  href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="table-container">
+    <h1>All Bookings</h1>
+    <div class="form-row">
+        <div class="form-container">
+            <form method="get" action="">
+                <input type="text" name="user" placeholder="Filter by agent name">
+                
+            </form>
+        </div>
+        <div class="filter-container">
+            <button type="submit">Filter</button><!-- Place your filter option here -->
+            <!-- Example: a dropdown or another input field -->
+        </div>
+    </div>
+    <table class="all_booking_table">
+        <thead>
+            <tr>
+                <th>Booked_by</th>
+                <th>Customer Name</th>
+                <th>Customer Email</th>
+                <th>Travel Date</th>
+                <th>Package</th>
+                <th>Package Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.user }}</td>
+                <td>{{ booking.customer_name }}</td> <!-- Adjust according to your model field -->
+                <td>{{ booking.customer_email }}</td>
+                <td>{{ booking.start_Date }} - {{ booking.end_Date }}</td>
+                <td>{{ booking.Package.destination }}</td> <!-- Assuming there's a 'name' field in your Package model -->
+                <td>{{ booking.Package.price }}</td> <!-- Assuming there's a 'price' field in your Package model -->
+                <td style="text-align: center;"><a href="{% url 'booking_update' booking.id %}" class="edit-action"><i class="fas fa-edit"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5">Total Amount</td>
+            <td>{{ total_amount }}</td>
+        </tr>
+    </tfoot>
+    </table>
+<br><br>
+</div>
+{% endblock %}

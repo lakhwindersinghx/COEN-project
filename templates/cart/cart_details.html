@@ -1,0 +1,106 @@
+{#<!-- cart_details.html -->#}
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block content %}#}
+{#<h2>Your Cart</h2>#}
+{#<ul>#}
+{#{% for item in cart.items.all %}#}
+{#    <li>{{ item.package.destination }} - Quantity: {{ item.quantity }} - Price: {{ item.package.price }}</li>#}
+{#{% endfor %}#}
+{#</ul>#}
+{#{% endblock %}#}
+<!-- cart_details.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        .cart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.cart-container h2 {
+    color: #333;
+}
+
+.cart-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-container li {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-info {
+    font-size: 16px;
+}
+
+.cart-buttons form {
+    margin: 0;
+}
+
+.btn-danger {
+    color: white;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.btn-success {
+    color: white;
+    background-color: #28a745;
+    border-color: #28a745;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="cart-container">
+    <h2>Your Cart</h2>
+    {% if cart.items.all %}
+    <ul>
+        {% for item in cart.items.all %}
+        <li>
+            <span class="item-info">{{ item.package.destination }} (Quantity: {{ item.quantity }}) - Price: ${{ item.package.price }}</span>
+            <div class="cart-buttons">
+                <!-- Remove item button -->
+                <form action="{% url 'remove_from_cart' item.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <!-- Payment button -->
+{#    <div class="checkout">#}
+{#        <a href="{% url 'create_checkout_session' %}" class="btn btn-success">Proceed to Payment</a>#}
+{#    </div>#}
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}

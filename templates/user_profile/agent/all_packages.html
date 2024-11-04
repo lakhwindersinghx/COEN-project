@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet"  href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="table-container">
+    <h1>All Packages</h1>
+    <div class="form-row">
+        <div class="form-container">
+            <form method="get" action="">
+                <input type="text" name="destination" placeholder="Filter by destination">
+
+            </form>
+        </div>
+        <div class="filter-container">
+            <button type="submit">Filter</button>
+        </div>
+    </div>
+    <table class="all_package_table">
+        <thead>
+            <tr>
+                <th>Created by</th>
+                <th>Destination</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for package in packages %}
+            <tr>
+                <td>{{ package.user }}</td>
+                <td>{{ package.destination }}</td>
+                <td>{{ package.price }}</td>
+                <td style="text-align: center;"><a href="{% url 'package_update' package.id %}" class="edit-action"><i class="fas fa-edit"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<br><br>
+</div>
+{% endblock %}
